@@ -34,10 +34,8 @@
 \graphicspath{{figures/}} % Location of the graphics files
 \usepackage{booktabs} % Top and bottom rules for table
 \usepackage[export]{adjustbox}
-\usepackage[style=alphabetic,
-            doi=false,
-            isbn=false,
-			url=false]{biblatex}
+\usepackage{hyperref}
+\usepackage[style=authoryear]{biblatex}
 \usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
 \usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
 \usepackage{wrapfig} % Allows wrapping text around tables and figures
@@ -95,8 +93,6 @@ Campus Universitaire Savoie Technolac\\
 \section*{Introduction}
 
 Phénomène observable dans les rues durant une averse particulièrement intense, le film ruisselant est un écoulement complexe qui trouve des applications au sein du génie des procédés industriels.
-
-
 
 Échangeurs de chaleur, évaporateurs sont des équipements technologiques pouvant tirer profit des caractéristiques particulières de ce phénomène.
 
@@ -176,28 +172,51 @@ Modèle asymptotique intégré sur la hauteur du film a été développé, basé
 On observe nettement les effets de recirculation au sein de l'onde décrits par \textcite{Brauner1989}, \textcite{Yoshimura1996} ou \textcite{Miyara1999}.
 
 \subsection*{Couplage thermique}
-Suivant un développement analogue, un modèle asymptotique a été écrit basé sur les équations de Fourrier (publication en cours d‹écriture).
+Suivant un développement analogue, un modèle asymptotique a été écrit basé sur les équations de Fourrier (publication en cours d'écriture).
 
+\begin{multicols}{2}
+    \begin{center}
+        \includegraphics[width=0.98\columnwidth]{01-established_wave_T}
+        \captionof{figure}{}
+        \label{fig:thermal}
+    \end{center}
+    \columnbreak
+    \begin{center}
+        \includegraphics[width=0.98\columnwidth]{01-established_wave_Tmag_streamlines}
+        \captionof{figure}{}
+        \label{fig:streamlines_thermal}
+    \end{center}
+\end{multicols}
+
+On observe nettement un front thermique situé proche du point de stagnation du fluide au sein de la vague. A noter que le modèle n'est pas assez complexe pour représenter correctement ce phénomènes.
 
 \subsection*{Impact de la fréquence de forçage}
 
-\subsubsection*{Sur l'hydrodynamique}
-Les simulations ont été faite avec un bruit blanc en entrée additionné d'un forçage sinusoidale.
+\begin{multicols}{2}
+    \subsubsection*{Sur l'hydrodynamique}
+    Les simulations ont été faite avec un bruit blanc en entrée additionné d'un forçage sinusoidale.
 
-#figure
+    \begin{center}
+        \includegraphics[width=0.98\columnwidth]{01-frequency_effect}
+        \captionof{figure}{}
+        \label{fig:thermal}
+    \end{center}
 
-Pour de haute et de basses fréquences, les ondes naturelles dominent.
+    Pour de haute et de basses fréquences, les ondes naturelles dominent.
+    \columnbreak
 
-\subsubsection*{Sur l'intensification de transfert}
-
-
-
-\subsection*{Impact de la géométrie}
+    \subsubsection*{Sur l'intensification de transfert}
+\end{multicols}
 
 \section*{Suite des travaux}
 
-\subsection*{Prise en compte de la turbulence}
-\subsection*{Effet Marangoni et \emph{dry patchs}}
+\begin{multicols}{2}
+    \subsection*{Prise en compte de la turbulence}
+
+    \columnbreak
+
+    \subsection*{Effet Marangoni et \emph{dry patchs}}
+\end{multicols}
 
 \end{multicols}
 
@@ -241,12 +260,13 @@ Pour de haute et de basses fréquences, les ondes naturelles dominent.
     \line(1,0){1500}
 \end{center}
 
-\printbibliography
+% \printbibliography
 
-\begin{center}
-    \line(1,0){1500}
-\end{center}
+% \begin{center}
+%     \line(1,0){1500}
+% \end{center}
 
-\section*{Sources, données et contenu additionnel: }
+\section*{Sources, données et contenu additionnel}
+\url{https://github.com/celliern/arc_2017}
 
 \end{document}
