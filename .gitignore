@@ -224,3 +224,4 @@ TSWLatexianTemp*
 
 # data results
 data/**
+data/**/*
