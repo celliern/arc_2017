@@ -1,0 +1,252 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% a0poster Portrait Poster
+% LaTeX Template
+% Version 1.0 (22/06/13)
+%
+% The a0poster class was created by:
+% Gerlinde Kettl and Matthias Weiser (tex@kettl.de)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a0,portrait,11pt]{a0poster}
+
+\usepackage{multicol} % This is so we can have multiple columns of text side-by-side
+\columnsep=100pt % This is the amount of white space between the columns in the poster
+\columnseprule=3pt % This is the thickness of the black line between the columns in the poster
+
+\usepackage[svgnames]{xcolor} % Specify colors by their 'svgnames', for a full list of all colors available see here: http://www.latextemplates.com/svgnames-colors
+
+%\usepackage{times} % Use the times font
+\usepackage{palatino} % Uncomment to use the Palatino font
+\usepackage[utf8]{inputenc}
+\usepackage[frenchb]{babel}
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Location of the graphics files
+\usepackage{booktabs} % Top and bottom rules for table
+\usepackage[export]{adjustbox}
+\usepackage[style=alphabetic,
+            doi=false,
+            isbn=false,
+			url=false]{biblatex}
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+\usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
+\usepackage{wrapfig} % Allows wrapping text around tables and figures
+
+\addbibresource{library.bib}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	POSTER HEADER
+%----------------------------------------------------------------------------------------
+
+% The header is divided into two boxes:
+% The first is 75% wide and houses the title, subtitle, names, university/organization and contact information
+% The second is 25% wide and houses a logo for your university/organization or a photo of you
+% The widths of these boxes can be easily edited to accommodate your content as you see fit
+
+\begin{minipage}[b]{0.5\linewidth}
+\veryHuge \color{NavyBlue} \textbf{Optimisation d'échangeurs de chaleur à film ruisselant} \color{Black}\\ % Title
+\Huge\textit{}\\[2cm] % Subtitle
+\huge \textbf{Nicolas CELLIER}\\[0.5cm] % Author(s)
+\huge Laboratoire LOCIE\\
+Campus Universitaire Savoie Technolac\\
+73376 Le Bourget du Lac\\[0.4cm] % University/organization
+\Large \texttt{contact@nicolas-cellier.net} --- +336 71 37 74 67\\
+\end{minipage}
+%
+\begin{minipage}[b]{0.5\linewidth}
+\begin{flushright}
+	\includegraphics[height=4cm]{logo-arc-72dpi}
+  \hspace{1cm}
+  \includegraphics[height=4cm]{logo_ra}
+	\hspace{1cm}
+	\includegraphics[height=4cm]{locie-logo}
+\end{flushright}
+\vspace{10cm}
+\end{minipage}
+
+\vspace{1cm} % A bit of extra whitespace between the header and poster content
+
+%----------------------------------------------------------------------------------------
+
+\begin{multicols}{2} % This is how many columns your poster will be broken into, a portrait poster is generally split into 2 columns
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\color{SaddleBrown} % SaddleBrown color for the introduction
+
+\section*{Introduction}
+
+Phénomène observable dans les rues durant une averse particulièrement intense, le film ruisselant est un écoulement complexe qui trouve des applications au sein du génie des procédés industriels.
+
+
+
+Échangeurs de chaleur, évaporateurs sont des équipements technologiques pouvant tirer profit des caractéristiques particulières de ce phénomène.
+
+En s'écoulant sur une surface plane et sous certaines conditions hydrodynamiques, un fluide pourra commencer à se déstabiliser et présenter des séries d'ondelettes à sa surface. Ce phénomène s'accompagne d'une forte intensification des transferts (thermiques et matière).
+
+\begin{multicols}{2}
+    \begin{center}\vspace{.2cm}
+        \adjincludegraphics[height=4cm,width=.95\columnwidth,trim={0 {.5\height} 0 0},clip]{street_flow_01}
+        \captionof{figure}{Film d'eau ruisselant le long d'une rue en pente}
+    \end{center}\vspace{.2cm}
+    \columnbreak
+    \begin{center}\vspace{.5cm}
+    	\includegraphics[height=4cm]{thinfilm}
+        \includegraphics[height=4cm]{thinfilm_unstable}
+    	\captionof{figure}{Schéma d'un film ruisselant, avant et après déstabilisation}
+    \end{center}\vspace{.5cm}
+\end{multicols}
+
+\color{DarkSlateGray} % DarkSlateGray color for the rest of the content
+
+\section*{Problématique}
+\begin{itemize}
+	\item[$\bullet$] Couplage entre l'hydrodynamique et les phénomènes de transfert relativement peu étudié.
+	\item[$\bullet$] Sa maîtrise peut mener à une intensification des phénomènes au cœur d'équipements technologiques et à la réduction de leur encombrement.
+	\item[$\bullet$] Nécessité de modéliser correctement l'hydrodynamique du film, et le couplage avec les transferts de chaleurs / de masse.
+\end{itemize}
+
+\subsection*{Les modèles}
+\begin{itemize}
+	\item[$\bullet$] Modèles industriels nombreux, mais imparfaits \cite{Killion2001}
+	\begin{itemize}
+		\item Beaucoup de corrélations basés sur films plats.
+		\color{DarkRed} \item Les films ruisselants verticaux sont instables quelque soit le Reynolds \textcite{Miller1998a}.
+		\item Incompréhension des interactions hydro / thermique menant à l'intensification de transfert
+	\end{itemize}
+	\item[$\bullet$] Simulation numérique direct, couteuse
+	\begin{itemize}
+		\item Basé sur la résolution directe des équations de Navier et Stokes et de Fourrier.
+		\color{DarkRed} \item Le coût calcul interdit un travail d'optimisation en des temps raisonnables.
+	\end{itemize}
+	\item[$\bullet$] \textcolor{DarkGreen}{Modèles asymptotiques (méthode retenue)}
+	\begin{itemize}
+		\item Basé un développement en couche limite adapté aux films ruisselants
+		\color{DarkRed} \item Limité à un domaine de paramètres restreints (faible Reynolds et Peclet).
+		\color{DarkRed} \item Travail important sur les équations en amont.
+	\end{itemize}
+\end{itemize}
+
+\columnbreak
+
+\section*{Travaux engagés}
+\subsection*{Modélisation hydrodynamique}
+Modèle asymptotique intégré sur la hauteur du film a été développé, basé sur les travaux de \textcite{Ruyer-Quil2000}.
+
+\begin{multicols}{2}
+    \begin{align*}
+        \partial_t h =& -\partial_x q\\
+        3 \mathrm{Re} \partial_t q =& \frac{5}{6} h
+            \left(
+                1 - Ct \partial_x h + We \partial_{x,x,x} h
+            \right)\\
+        & - \frac{5}{2}\frac{q}{h^2}
+        - \frac{5}{4} M \partial_x \theta \\
+        & + 3 \mathrm{Re}
+            \left(
+                \frac{9}{7}\frac{q}{h}^2 \partial_x h - \frac{17}{7}\frac{q}{h} \partial_x q
+            \right)
+    \end{align*}
+    \columnbreak
+    \begin{center}\vspace{.5cm}
+        \includegraphics[width=0.95\columnwidth]{01-established_wave_streamlines}
+        \captionof{figure}{Lignes de courants dune onde propagative, film vertical. ($\mathrm{Re}=20$, $\mathrm{We}=30$)}
+        \label{fig:streamlines}
+    \end{center}\vspace{.5cm}
+\end{multicols}
+
+On observe nettement les effets de recirculation au sein de l'onde décrits par \textcite{Brauner1989}, \textcite{Yoshimura1996} ou \textcite{Miyara1999}.
+
+\subsection*{Couplage thermique}
+Suivant un développement analogue, un modèle asymptotique a été écrit basé sur les équations de Fourrier (publication en cours d‹écriture).
+
+
+\subsection*{Impact de la fréquence de forçage}
+
+\subsubsection*{Sur l'hydrodynamique}
+Les simulations ont été faite avec un bruit blanc en entrée additionné d'un forçage sinusoidale.
+
+#figure
+
+Pour de haute et de basses fréquences, les ondes naturelles dominent.
+
+\subsubsection*{Sur l'intensification de transfert}
+
+
+
+\subsection*{Impact de la géométrie}
+
+\section*{Suite des travaux}
+
+\subsection*{Prise en compte de la turbulence}
+\subsection*{Effet Marangoni et \emph{dry patchs}}
+
+\end{multicols}
+
+\begin{center}
+    \line(1,0){1500}
+\end{center}
+
+\begin{multicols}{2}
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline $\rho$ & masse volumique \\
+            \hline $u$ & champs de vitesse \\
+            \hline $p$ & pression \\
+            \hline $\tau$ & tenseur des contraintes \\
+            \hline $h$ & hauteur de l'interface \\
+            \hline
+        \end{tabular}
+        \begin{tabular}{|c|c|}
+            \hline $q$ & débit local \\
+            \hline $f$ & force volumique \\
+            \hline $Ct$ & Facteur de pente \\
+            \hline $Re$ & Nombre de Reynolds \\
+            \hline $W\!e$ & Nombre de Weber \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+        Encadrement de thèse :
+        \begin{itemize}
+            \item C. Ruyer - Quil (LOCIE)
+            \item N. Caney (LEGI)
+            \item P. Bandelier (CEA - Liten)
+        \end{itemize}
+
+        Partenaire industriel : CIAT
+
+        Mis en place et soutenu par la région Rhône-Alpes
+\end{multicols}
+
+\begin{center}
+    \line(1,0){1500}
+\end{center}
+
+\printbibliography
+
+\begin{center}
+    \line(1,0){1500}
+\end{center}
+
+\section*{Sources, données et contenu additionnel: }
+
+\end{document}
