@@ -78,9 +78,10 @@ Campus Universitaire Savoie Technolac\\
 
 %----------------------------------------------------------------------------------------
 
-\begin{multicols}{2}
+\color{DarkSlateGray} % DarkSlateGray color for the rest of the content
 
-    \color{SaddleBrown}
+\begin{multicols}{2}
+    \setlength{\columnseprule}{0pt}
 
     \section*{Introduction}
 
@@ -103,8 +104,6 @@ Campus Universitaire Savoie Technolac\\
         \end{center}\vspace{.5cm}
     \end{multicols}
 
-    \color{DarkSlateGray} % DarkSlateGray color for the rest of the content
-
     \section*{Problématique}
     \begin{itemize}
     	\item[$\bullet$] Couplage entre l'hydrodynamique et les phénomènes de transfert relativement peu étudié.
@@ -114,23 +113,25 @@ Campus Universitaire Savoie Technolac\\
 
     \subsection*{Les modèles}
     \begin{itemize}
-	    \item[$\bullet$] Modèles industriels nombreux, mais imparfaits \cite{Killion2001}
+	    \item[$\bullet$] Modèles industriels nombreux, mais imparfaits [\cite{Killion2001}].
     	\begin{itemize}
     		\item Beaucoup de corrélations basés sur films plats.
-    		\color{DarkRed} \item Les films ruisselants verticaux sont instables quelque soit le Reynolds \textcite{Miller1998a}.
+    		\item Les films ruisselants verticaux sont instables quelque soit le Reynolds [\textcite{Miller1998a}].
     		\item Incompréhension des interactions hydro / thermique menant à l'intensification de transfert
     	\end{itemize}
 	    \item[$\bullet$] Simulation numérique direct, couteuse
     	\begin{itemize}
     		\item Basé sur la résolution directe des équations de Navier et Stokes et de Fourrier.
-    		\color{DarkRed} \item Le coût calcul interdit un travail d'optimisation en des temps raisonnables.
+    		\item Le coût calcul interdit un travail d'optimisation en des temps raisonnables.
     	\end{itemize}
-	    \item[$\bullet$] \textcolor{DarkGreen}{Modèles asymptotiques (méthode retenue)}
+        \color{DarkRed}{
+	    \item[$\bullet$] Modèles asymptotiques (méthode retenue)
     	\begin{itemize}
     		\item Basé un développement en couche limite adapté aux films ruisselants
-    		\color{DarkRed} \item Limité à un domaine de paramètres restreints (faible Reynolds et Peclet).
-    		\color{DarkRed} \item Travail important sur les équations en amont.
+    		\item Limité à un domaine de paramètres restreints (faible Reynolds et Peclet).
+    		\item Travail important sur les équations en amont.
     	\end{itemize}
+        }
     \end{itemize}
 \end{multicols}
 
@@ -212,9 +213,14 @@ Campus Universitaire Savoie Technolac\\
         Les Reynolds présentés sont un Reynolds moyen, basé sur le film plat équivalent. Il peut être bien plus élevé, en particulier à la crête des ondes.
 
         L'objectif est de réécrire le modèle en incluant une viscosité turbulente via des lois de comportements usuelles. Les tourbillons de petites échelles sont pris en compte via leurs dissipations d'énergie au sein de l'écoulement.
+
         \columnbreak
 
         \subsection*{Effet Marangoni et \emph{dry patchs}}
+        L'effet Marangoni est lié à la dépendance entre les caractéristique du fluide et la tempéraature (ou la concentration d'un solvant), en particulier sur la tension de surface.
+
+        Cet effet mène à une instabilité supplémentaire, souvent dans le sens transverse de l'écoulement et mène à la formation de rivulets, et à un assèchement local de l'écoulement dans les cas extrèmes.
+
     \end{multicols}
 
 \end{multicols}
