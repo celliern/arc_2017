@@ -5,4 +5,4 @@ Sources et contenu additionnel pour le poster de présentation à la journée sc
 
 [Notebook jupyter pour la reproductabilité des résultats](https://nbviewer.jupyter.org/github/celliern/arc_2017/blob/master/contenu_additionnel.ipynb)
 
-![Le poster](poster_arc.pdf)
+[![Le poster](poster_arc.png)](poster_arc.pdf)
