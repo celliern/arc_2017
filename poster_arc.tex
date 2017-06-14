@@ -29,7 +29,8 @@
 %\usepackage{times} % Use the times font
 \usepackage{palatino} % Uncomment to use the Palatino font
 \usepackage[utf8]{inputenc}
-\usepackage[frenchb]{babel}
+ \usepackage{textcomp}
+\usepackage[french]{babel}
 \usepackage{graphicx} % Required for including images
 \graphicspath{{figures/}} % Location of the graphics files
 \usepackage{booktabs} % Top and bottom rules for table
@@ -162,7 +163,7 @@ Campus Universitaire Savoie Technolac\\
         \columnbreak
         \begin{center}\vspace{.5cm}
             \includegraphics[width=0.95\columnwidth]{01-established_wave_streamlines}
-            \captionof{figure}{Lignes de courants dune onde propagative, film vertical. ($\mathrm{Re}=20$, $\mathrm{We}=30$)}
+            \captionof{figure}{Lignes de courants dune onde propagative, film vertical. ($\mathrm{Re}=20$, eau à 20 °C)}
             \label{fig:streamlines}
         \end{center}\vspace{.5cm}
     \end{multicols}
@@ -175,13 +176,13 @@ Campus Universitaire Savoie Technolac\\
     \begin{multicols}{2}
         \begin{center}
             \includegraphics[width=0.98\columnwidth]{01-established_wave_T}
-            \captionof{figure}{}
+            \captionof{figure}{Champs de température ($\mathrm{Re}=20$, eau à 20°C)}
             \label{fig:thermal}
         \end{center}
         \columnbreak
         \begin{center}
             \includegraphics[width=0.98\columnwidth]{01-established_wave_Tmag_streamlines}
-            \captionof{figure}{}
+            \captionof{figure}{Magnitude du gradient de température et lignes de courant ($\mathrm{Re}=20$, $\mathrm{Bi} = 0.1$, eau à 20°C)}
             \label{fig:streamlines_thermal}
         \end{center}
     \end{multicols}
@@ -192,15 +193,15 @@ Campus Universitaire Savoie Technolac\\
 
     \begin{multicols}{2}
         \subsubsection*{Sur l'hydrodynamique}
-        Les simulations ont été faite avec un bruit blanc en entrée additionné d'un forçage sinusoidale.
 
         \begin{center}
             \includegraphics[width=0.98\columnwidth]{01-frequency_effect}
-            \captionof{figure}{}
+            \captionof{figure}{Plaque verticale avec forçage (3Hz à 18 Hz) bruité en entrée ($\mathrm{Re}=20$, eau à 20°C)}
             \label{fig:freq_effect}
         \end{center}
 
-        Pour de haute et de basses fréquences, les ondes naturelles dominent.
+        Pour de haute et de basses fréquences, les ondes naturelles dominent. Entre les deux, des trains d'ondes saturés sont présents sur une grande partie de la plaque. Lorsque la fréquence est importante, les ondes capillaires ne sont plus observables.
+
         \columnbreak
 
         \subsubsection*{Sur l'intensification de transfert}
@@ -217,9 +218,9 @@ Campus Universitaire Savoie Technolac\\
         \columnbreak
 
         \subsection*{Effet Marangoni et \emph{dry patchs}}
-        L'effet Marangoni est lié à la dépendance entre les caractéristique du fluide et la tempéraature (ou la concentration d'un solvant), en particulier sur la tension de surface.
+        L'effet Marangoni est lié à la dépendance entre les caractéristique du fluide et la température (ou la concentration d'un solvant), en particulier sur la tension de surface.
 
-        Cet effet mène à une instabilité supplémentaire, souvent dans le sens transverse de l'écoulement et mène à la formation de rivulets, et à un assèchement local de l'écoulement dans les cas extrèmes.
+        Cet effet mène à une instabilité supplémentaire, souvent dans le sens transverse de l'écoulement et mène à la formation de rivulets, et à un assèchement local de l'écoulement dans les cas extrêmes.
 
     \end{multicols}
 
@@ -233,7 +234,7 @@ Campus Universitaire Savoie Technolac\\
     \begin{center}
         \begin{tabular}{|c|c|}
             \hline $\rho$ & masse volumique \\
-            \hline $u$ & champs de vitesse \\
+            \hline $u$ ou $V$ & champs de vitesse \\
             \hline $p$ & pression \\
             \hline $\tau$ & tenseur des contraintes \\
             \hline $h$ & hauteur de l'interface \\
@@ -242,9 +243,10 @@ Campus Universitaire Savoie Technolac\\
         \begin{tabular}{|c|c|}
             \hline $q$ & débit local \\
             \hline $f$ & force volumique \\
-            \hline $Ct$ & Facteur de pente \\
-            \hline $Re$ & Nombre de Reynolds \\
-            \hline $W\!e$ & Nombre de Weber \\
+            \hline $\mathrm{Ct}$ & Facteur de pente \\
+            \hline $\mathrm{Re}$ & Nombre de Reynolds \\
+            \hline $\mathrm{W\!e}$ & Nombre de Weber \\
+            \hline $\mathrm{Bi}$ & Nombre de Biot \\
             \hline
         \end{tabular}
     \end{center}
@@ -265,13 +267,7 @@ Campus Universitaire Savoie Technolac\\
     \line(1,0){1500}
 \end{center}
 
-% \printbibliography
-
-% \begin{center}
-%     \line(1,0){1500}
-% \end{center}
-
-\section*{Données et contenu additionnel}
+\subsection*{Données et contenu additionnel}
 \begin{description}
     \item[Source] \url{https://github.com/celliern/arc_2017}
     \item[Élément de reproductibilités] \url{https://nbviewer.jupyter.org/github/celliern/arc_2017/blob/master/contenu_additionnel.ipynb}
