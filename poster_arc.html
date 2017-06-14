@@ -1,0 +1,152 @@
+<p><strong>Optimisation d’échangeurs de chaleur à film ruisselant</strong><br />
+<em></em><br />
+<strong>Nicolas CELLIER</strong><br />
+Laboratoire LOCIE<br />
+Campus Universitaire Savoie Technolac<br />
+73376 Le Bourget du Lac<br />
+<code>contact@nicolas-cellier.net</code> — +336 71 37 74 67<br />
+</p>
+<p><img src="logo-arc-72dpi" alt="image" height="151" /> <img src="logo_ra" alt="image" height="151" /> <img src="locie-logo" alt="image" height="151" /></p>
+<p><span>2</span></p>
+<h1 id="introduction" class="unnumbered">Introduction</h1>
+<p>Phénomène observable dans les rues durant une averse particulièrement intense, le film ruisselant est un écoulement complexe qui trouve des applications au sein du génie des procédés industriels.</p>
+<p>Échangeurs de chaleur, évaporateurs sont des équipements technologiques pouvant tirer profit des caractéristiques particulières de ce phénomène.</p>
+<p>En s’écoulant sur une surface plane et sous certaines conditions hydrodynamiques, un fluide pourra commencer à se déstabiliser et présenter des séries d’ondelettes à sa surface. Ce phénomène s’accompagne d’une forte intensification des transferts (thermiques et matière).</p>
+<p><span>2</span></p>
+<p><img src="thinfilm" alt="image" height="151" /> <img src="thinfilm_unstable" alt="image" height="151" /></p>
+<h1 id="problématique" class="unnumbered">Problématique</h1>
+<ul>
+<li><p>Couplage entre l’hydrodynamique et les phénomènes de transfert relativement peu étudié.</p></li>
+<li><p>Sa maîtrise peut mener à une intensification des phénomènes au cœur d’équipements technologiques et à la réduction de leur encombrement.</p></li>
+<li><p>Nécessité de modéliser correctement l’hydrodynamique du film, et le couplage avec les transferts de chaleurs / de masse.</p></li>
+</ul>
+<h2 id="les-modèles" class="unnumbered">Les modèles</h2>
+<ul>
+<li><p>Modèles industriels nombreux, mais imparfaits [<span class="citation"></span>].</p>
+<ul>
+<li><p>Beaucoup de corrélations basés sur films plats.</p></li>
+<li><p>Les films ruisselants verticaux sont instables quelque soit le Reynolds [<span class="citation"></span>].</p></li>
+<li><p>Incompréhension des interactions hydro / thermique menant à l’intensification de transfert</p></li>
+</ul></li>
+<li><p>Simulation numérique direct, couteuse</p>
+<ul>
+<li><p>Basé sur la résolution directe des équations de Navier et Stokes et de Fourrier.</p></li>
+<li><p>Le coût calcul interdit un travail d’optimisation en des temps raisonnables.</p></li>
+</ul></li>
+</ul>
+<p>(1,0)<span>1500</span></p>
+<p><span>2</span></p>
+<h1 id="travaux-engagés" class="unnumbered">Travaux engagés</h1>
+<h2 id="modélisation-hydrodynamique" class="unnumbered">Modélisation hydrodynamique</h2>
+<p>Modèle asymptotique intégré sur la hauteur du film a été développé, basé sur les travaux de <span class="citation"></span>.</p>
+<p><span>2</span> <br /><span class="math display">$$\begin{aligned}
+            \partial_t h =&amp; -\partial_x q\\
+            3 \mathrm{Re} \partial_t q =&amp; \frac{5}{6} h
+                \left(
+                    1 - Ct \partial_x h + We \partial_{x,x,x} h
+                \right)\\
+            &amp; - \frac{5}{2}\frac{q}{h^2}
+            - \frac{5}{4} M \partial_x \theta \\
+            &amp; + 3 \mathrm{Re}
+                \left(
+                    \frac{9}{7}\frac{q}{h}^2 \partial_x h - \frac{17}{7}\frac{q}{h} \partial_x q
+                \right)
+        \end{aligned}$$</span><br /></p>
+<p><img src="01-established_wave_streamlines" alt="image" /> [fig:streamlines]</p>
+<p>On observe nettement les effets de recirculation au sein de l’onde décrits par <span class="citation"></span>, <span class="citation"></span> ou <span class="citation"></span>.</p>
+<h2 id="couplage-thermique" class="unnumbered">Couplage thermique</h2>
+<p>Suivant un développement analogue, un modèle asymptotique a été écrit basé sur les équations de Fourrier (publication en cours d’écriture).</p>
+<p><span>2</span></p>
+<p><img src="01-established_wave_T" alt="image" /> [fig:thermal]</p>
+<p><img src="01-established_wave_Tmag_streamlines" alt="image" /> [fig:streamlines_thermal]</p>
+<p>On observe nettement un front thermique situé proche du point de stagnation du fluide au sein de la vague. A noter que le modèle n’est pas assez complexe pour représenter correctement ce phénomènes.</p>
+<h2 id="impact-de-la-fréquence-de-forçage" class="unnumbered">Impact de la fréquence de forçage</h2>
+<p><span>2</span></p>
+<h3 id="sur-lhydrodynamique" class="unnumbered">Sur l’hydrodynamique</h3>
+<p>Les simulations ont été faite avec un bruit blanc en entrée additionné d’un forçage sinusoidale.</p>
+<p><img src="01-frequency_effect" alt="image" /> [fig:thermal]</p>
+<p>Pour de haute et de basses fréquences, les ondes naturelles dominent.</p>
+<h3 id="sur-lintensification-de-transfert" class="unnumbered">Sur l’intensification de transfert</h3>
+<h1 id="suite-des-travaux" class="unnumbered">Suite des travaux</h1>
+<p><span>2</span></p>
+<h2 id="prise-en-compte-de-la-turbulence" class="unnumbered">Prise en compte de la turbulence</h2>
+<p>Les Reynolds présentés sont un Reynolds moyen, basé sur le film plat équivalent. Il peut être bien plus élevé, en particulier à la crête des ondes.</p>
+<p>L’objectif est de réécrire le modèle en incluant une viscosité turbulente via des lois de comportements usuelles. Les tourbillons de petites échelles sont pris en compte via leurs dissipations d’énergie au sein de l’écoulement.</p>
+<h2 id="effet-marangoni-et-dry-patchs" class="unnumbered">Effet Marangoni et <em>dry patchs</em></h2>
+<p>L’effet Marangoni est lié à la dépendance entre les caractéristique du fluide et la tempéraature (ou la concentration d’un solvant), en particulier sur la tension de surface.</p>
+<p>Cet effet mène à une instabilité supplémentaire, souvent dans le sens transverse de l’écoulement et mène à la formation de rivulets, et à un assèchement local de l’écoulement dans les cas extrèmes.</p>
+<p>(1,0)<span>1500</span></p>
+<p><span>2</span></p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline"><em>ρ</em></span></th>
+<th align="center">masse volumique</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline"><em>u</em></span></td>
+<td align="center">champs de vitesse</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline"><em>p</em></span></td>
+<td align="center">pression</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline"><em>τ</em></span></td>
+<td align="center">tenseur des contraintes</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline"><em>h</em></span></td>
+<td align="center">hauteur de l’interface</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline"><em>q</em></span></th>
+<th align="center">débit local</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline"><em>f</em></span></td>
+<td align="center">force volumique</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline"><em>C</em><em>t</em></span></td>
+<td align="center">Facteur de pente</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline"><em>R</em><em>e</em></span></td>
+<td align="center">Nombre de Reynolds</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline"><em>W</em>​<em>e</em></span></td>
+<td align="center">Nombre de Weber</td>
+</tr>
+</tbody>
+</table>
+<p>Encadrement de thèse :</p>
+<ul>
+<li><p>C. Ruyer - Quil (LOCIE)</p></li>
+<li><p>N. Caney (LEGI)</p></li>
+<li><p>P. Bandelier (CEA - Liten)</p></li>
+</ul>
+<p>Partenaire industriel : CIAT</p>
+<p>Mis en place et soutenu par la région Rhône-Alpes</p>
+<p>(1,0)<span>1500</span></p>
+<h1 id="données-et-contenu-additionnel" class="unnumbered">Données et contenu additionnel</h1>
+<dl>
+<dt>Source</dt>
+<dd><p><a href="https://github.com/celliern/arc_2017" class="uri">https://github.com/celliern/arc_2017</a></p>
+</dd>
+<dt>Élément de reproductibilités</dt>
+<dd><p><a href="https://nbviewer.jupyter.org/github/celliern/arc_2017/blob/master/contenu_additionnel.ipynb" class="uri">https://nbviewer.jupyter.org/github/celliern/arc_2017/blob/master/contenu_additionnel.ipynb</a></p>
+</dd>
+<dt>Solveur utilisé</dt>
+<dd><p><a href="https://locie.github.io/triflow/" class="uri">https://locie.github.io/triflow/</a></p>
+</dd>
+</dl>
