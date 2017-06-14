@@ -225,3 +225,7 @@ TSWLatexianTemp*
 # data results
 data/**
 data/**/*
+
+# logs
+log/**
+log/**/*
