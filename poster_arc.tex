@@ -29,7 +29,8 @@
 %\usepackage{times} % Use the times font
 \usepackage{palatino} % Uncomment to use the Palatino font
 \usepackage[utf8]{inputenc}
- \usepackage{textcomp}
+\usepackage{textcomp}
+\usepackage{minted}
 \usepackage[french]{babel}
 \usepackage{graphicx} % Required for including images
 \graphicspath{{figures/}} % Location of the graphics files
@@ -55,8 +56,9 @@
 % The widths of these boxes can be easily edited to accommodate your content as you see fit
 
 \begin{minipage}[b]{0.5\linewidth}
-\veryHuge \color{NavyBlue} \textbf{Optimisation d'échangeurs de chaleur à film ruisselant} \color{Black}\\ % Title
-\Huge\textit{}\\[2cm] % Subtitle
+\veryHuge \color{NavyBlue} \textbf{Optimisation d'échangeurs de chaleur à films ruisselants} \color{Black}\\ % Title
+\large \textit{\url{https://github.com/celliern/arc_2017}}\\[2cm] % Subtitle
+
 \huge \textbf{Nicolas CELLIER}\\[0.5cm] % Author(s)
 \huge Laboratoire LOCIE\\
 Campus Universitaire Savoie Technolac\\
@@ -75,11 +77,9 @@ Campus Universitaire Savoie Technolac\\
 \vspace{10cm}
 \end{minipage}
 
-\vspace{1cm} % A bit of extra whitespace between the header and poster content
+\vspace{1cm}
 
-%----------------------------------------------------------------------------------------
-
-\color{DarkSlateGray} % DarkSlateGray color for the rest of the content
+\color{DarkSlateGray}
 
 \begin{multicols}{2}
     \setlength{\columnseprule}{0pt}
@@ -138,12 +138,14 @@ Campus Universitaire Savoie Technolac\\
 \end{multicols}
 
 \begin{center}
-    \line(1,0){1500}
+    \line(1,0){1800}
 \end{center}
 
-\begin{multicols}{2}
+\section*{Travaux engagés}
+\subsection*{Écriture d'un solveur différence fini 1D axé prototypage \url{https://locie.github.io/triflow/}}
+    L'ensemble des simulations ont été effectué par un solveur écrit dans le cadre de la thèse, publié sous license open-source. Par la prise en compte de la structure creuse et l'utilisation de framework de compilation haute performance (via la librarie Theano), l'utilisation d'algorithmes spécialisé et de schéma temporels implicite d'ordres élevés, ce solveur permet d'écrire et de tester rapidement nos modèles.
 
-    \section*{Travaux engagés}
+\begin{multicols}{2}
     \subsection*{Modélisation hydrodynamique}
     Modèle asymptotique intégré sur la hauteur du film a été développé, basé sur les travaux de \textcite{Ruyer-Quil2000}.
 
@@ -172,7 +174,7 @@ Campus Universitaire Savoie Technolac\\
     On observe nettement les effets de recirculation au sein de l'onde décrits par \textcite{Brauner1989}, \textcite{Yoshimura1996} ou \textcite{Miyara1999}.
 
     \subsection*{Couplage thermique}
-    Suivant un développement analogue, un modèle asymptotique a été écrit basé sur les équations de Fourrier (publication en cours d'écriture).
+    Suivant un développement analogue, un modèle asymptotique a été écrit basé sur les équations de Fourrier (publication en cours d'écriture). Le profil de température est écrit comme une fonction de deux variables: $\theta = T|_{\bar{y}=0}$ et $\frac{\phi}{h} = \left.\partial_{y}T\right|_{\bar{y}=1}$, et l'intégration des résidus pondérés sur la hauteur du film mène à deux équations différentielles supplémentaire.
 
     \begin{multicols}{2}
         \begin{center}
@@ -189,6 +191,8 @@ Campus Universitaire Savoie Technolac\\
     \end{multicols}
 
     On observe nettement un front thermique situé proche du point de stagnation du fluide au sein de la vague. A noter que le modèle n'est pas assez complexe pour représenter correctement ce phénomènes.
+
+    \columnbreak
 
     \subsection*{Impact de la fréquence de forçage}
 
@@ -263,16 +267,5 @@ Campus Universitaire Savoie Technolac\\
 
         Mis en place et soutenu par la région Rhône-Alpes
 \end{multicols}
-
-\begin{center}
-    \line(1,0){1500}
-\end{center}
-
-\subsection*{Données et contenu additionnel}
-\begin{description}
-    \item[Source] \url{https://github.com/celliern/arc_2017}
-    \item[Élément de reproductibilités] \url{https://nbviewer.jupyter.org/github/celliern/arc_2017/blob/master/contenu_additionnel.ipynb}
-    \item[Solveur utilisé] \url{https://locie.github.io/triflow/}
-\end{description}
 
 \end{document}
