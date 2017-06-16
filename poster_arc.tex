@@ -110,7 +110,7 @@ Campus Universitaire Savoie Technolac\\
     \begin{itemize}
     	\item[$\bullet$] Couplage entre l'hydrodynamique et les phénomènes de transfert relativement peu étudié.
     	\item[$\bullet$] Sa maîtrise peut mener à une intensification des phénomènes au cœur d'équipements technologiques et à la réduction de leur encombrement.
-    	\item[$\bullet$] Nécessité de modéliser correctement l'hydrodynamique du film, et le couplage avec les transferts de chaleurs / de masse.
+    	\item[$\bullet$] Nécessité de modéliser correctement l'hydrodynamique du film et le couplage avec les transferts de chaleurs / de masse.
     \end{itemize}
 
     \subsection*{Les modèles}
@@ -119,18 +119,18 @@ Campus Universitaire Savoie Technolac\\
     	\begin{itemize}
     		\item Beaucoup de corrélations basés sur films plats.
     		\item Les films ruisselants verticaux sont instables quelque soit le Reynolds [\textcite{Miller1998a}].
-    		\item Incompréhension des interactions hydro / thermique menant à l'intensification de transfert
+    		\item Incompréhension des interactions hydrodynamique / thermique menant à l'intensification de transfert.
     	\end{itemize}
-	    \item[$\bullet$] Simulation numérique direct, couteuse
+	    \item[$\bullet$] Simulation numérique direct, coûteuse.
     	\begin{itemize}
     		\item Basé sur la résolution directe des équations de Navier et Stokes et de Fourrier.
-    		\item Le coût calcul interdit un travail d'optimisation en des temps raisonnables.
+    		\item Le coût des calculs interdit un travail d'optimisation en des temps raisonnables.
     	\end{itemize}
         \color{DarkRed}{
-	    \item[$\bullet$] Modèles asymptotiques (méthode retenue)
+	    \item[$\bullet$] Modèles asymptotiques (méthode retenue).
     	\begin{itemize}
-    		\item Basé un développement en couche limite adapté aux films ruisselants
-    		\item Limité à un domaine de paramètres restreints (faible Reynolds et Peclet).
+    		\item Basé un développement en couche limite adapté aux films ruisselants.
+    		\item Limité à un domaine de paramètres restreints (faible Reynolds).
     		\item Travail important sur les équations en amont.
     	\end{itemize}
         }
@@ -143,7 +143,7 @@ Campus Universitaire Savoie Technolac\\
 
 \section*{Travaux engagés}
 \subsection*{Écriture d'un solveur différence fini 1D axé prototypage \url{https://locie.github.io/triflow/}}
-    L'ensemble des simulations ont été effectué par un solveur écrit dans le cadre de la thèse, publié sous license open-source. Par la prise en compte de la structure creuse et l'utilisation de framework de compilation haute performance (via la librarie Theano), l'utilisation d'algorithmes spécialisé et de schéma temporels implicite d'ordres élevés, ce solveur permet d'écrire et de tester rapidement nos modèles.
+    L'ensemble des simulations ont été effectués par un solveur écrit dans le cadre de la thèse, publié sous license open-source. Par la prise en compte de la structure creuse et l'utilisation de framework de compilation haute performance (via la librarie Theano), l'utilisation d'algorithmes spécialisé et de schéma temporels implicite d'ordres élevés, ce solveur permet d'écrire et de tester rapidement nos modèles.
 
 \begin{multicols}{2}
     \subsection*{Modélisation hydrodynamique}
@@ -174,7 +174,7 @@ Campus Universitaire Savoie Technolac\\
     On observe nettement les effets de recirculation au sein de l'onde décrits par \textcite{Brauner1989}, \textcite{Yoshimura1996} ou \textcite{Miyara1999}.
 
     \subsection*{Couplage thermique}
-    Suivant un développement analogue, un modèle asymptotique a été écrit basé sur les équations de Fourrier (publication en cours d'écriture). Le profil de température est écrit comme une fonction de deux variables: $\theta = T|_{\bar{y}=0}$ et $\frac{\phi}{h} = \left.\partial_{y}T\right|_{\bar{y}=1}$, et l'intégration des résidus pondérés sur la hauteur du film mène à deux équations différentielles supplémentaire.
+    Suivant un développement analogue, un modèle asymptotique a été écrit basé sur les équations de Fourrier (publication en cours d'écriture). Le profil de température est écrit comme une fonction de deux variables: $\theta = T|_{\bar{y}=0}$ et $\frac{\phi}{h} = \left.\partial_{y}T\right|_{\bar{y}=1}$, et l'intégration des résidus pondérés sur la hauteur du film mène à deux équations différentielles supplémentaires.
 
     \begin{multicols}{2}
         \begin{center}
@@ -190,7 +190,7 @@ Campus Universitaire Savoie Technolac\\
         \end{center}
     \end{multicols}
 
-    On observe nettement un front thermique situé proche du point de stagnation du fluide au sein de la vague. A noter que le modèle n'est pas assez complexe pour représenter correctement ce phénomènes.
+    On observe nettement un front thermique situé proche du point de stagnation du fluide au sein de la vague. À noter que le modèle n'est pas assez complexe pour représenter correctement ce phénomène.
 
     \columnbreak
 
@@ -210,6 +210,15 @@ Campus Universitaire Savoie Technolac\\
         \columnbreak
 
         \subsubsection*{Sur l'intensification de transfert}
+
+        \begin{center}
+            \includegraphics[width=0.98\columnwidth]{01-Nusselt_freq}
+            \captionof{figure}{Intensification de transfert sur une plaque verticale de 60 cm avec forçage (1Hz à 48 Hz) bruité en entrée ($\mathrm{Re}=20$, eau à 20°C, $\mathrm{Bi}=0.1$, Peclet forcé à 525)}
+            \label{fig:freq_effect_Nu}
+        \end{center}
+
+        L'intensification minimale s'observe juste avant d'entrer dans le domaine des ondes saturés ($f=7\,\mathrm{Hz}$). On observe nettement des comportements similaires à hautes et basses fréquences, où les ondes naturelles dominent. Notre domaine d’intérêt commence à 9\,Hz. Le nombre de Nusselt augmente de façon brutal, pour diminuer avec la fréquence jusqu'à atteindre un plateau vers 20\,Hz.
+
     \end{multicols}
 
     \section*{Suite des travaux}
@@ -218,14 +227,14 @@ Campus Universitaire Savoie Technolac\\
         \subsection*{Prise en compte de la turbulence}
         Les Reynolds présentés sont un Reynolds moyen, basé sur le film plat équivalent. Il peut être bien plus élevé, en particulier à la crête des ondes.
 
-        L'objectif est de réécrire le modèle en incluant une viscosité turbulente via des lois de comportements usuelles. Les tourbillons de petites échelles sont pris en compte via leurs dissipations d'énergie au sein de l'écoulement.
+        L'objectif est de réécrire le modèle en incluant une viscosité turbulente via des lois de comportements usuelles. Les tourbillons de petites échelles sont prisent en compte via leurs dissipations d'énergie au sein de l'écoulement.
 
         \columnbreak
 
         \subsection*{Effet Marangoni et \emph{dry patchs}}
-        L'effet Marangoni est lié à la dépendance entre les caractéristique du fluide et la température (ou la concentration d'un solvant), en particulier sur la tension de surface.
+        L'effet Marangoni est lié à la dépendance entre les caractéristiques du fluide et la température (ou la concentration d'un solvant), en particulier sur la tension de surface.
 
-        Cet effet mène à une instabilité supplémentaire, souvent dans le sens transverse de l'écoulement et mène à la formation de rivulets, et à un assèchement local de l'écoulement dans les cas extrêmes.
+        Cet effet mène à une instabilité supplémentaire, souvent dans le sens transverse de l'écoulement et mène à la formation de rivulets et à un assèchement local de l'écoulement dans les cas extrêmes.
 
     \end{multicols}
 
