@@ -42,7 +42,7 @@
 \usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
 \usepackage{wrapfig} % Allows wrapping text around tables and figures
 
-\addbibresource{extracted.bib}
+\addbibresource{library.bib}
 
 \begin{document}
 
@@ -143,7 +143,7 @@ Campus Universitaire Savoie Technolac\\
 
 \section*{Travaux engagés}
 \subsection*{Écriture d'un solveur différence fini 1D axé prototypage \url{https://locie.github.io/triflow/}}
-    L'ensemble des simulations ont été effectués par un solveur écrit dans le cadre de la thèse, publié sous license open-source. Par la prise en compte de la structure creuse et l'utilisation de framework de compilation haute performance (via la librarie Theano), l'utilisation d'algorithmes spécialisé et de schéma temporels implicite d'ordres élevés, ce solveur permet d'écrire et de tester rapidement nos modèles.
+    L'ensemble des simulations ont été effectués par un solveur écrit dans le cadre de la thèse, publié sous license open-source. Par la prise en compte de la structure creuse et l'utilisation de framework de compilation haute performance (via la librarie Theano), l'utilisation d'algorithmes spécialisés et de schéma temporels implicites d'ordres élevés, ce solveur permet d'écrire et de tester rapidement nos modèles.
 
 \begin{multicols}{2}
     \subsection*{Modélisation hydrodynamique}
@@ -179,18 +179,18 @@ Campus Universitaire Savoie Technolac\\
     \begin{multicols}{2}
         \begin{center}
             \includegraphics[width=0.98\columnwidth]{01-established_wave_T}
-            \captionof{figure}{Champs de température ($\mathrm{Re}=20$, eau à 20°C)}
+            \captionof{figure}{Champs de température ($\mathrm{Re}=20$, eau à 20°C, $\mathrm{Bi}=0.1$)}
             \label{fig:thermal}
         \end{center}
         \columnbreak
         \begin{center}
-            \includegraphics[width=0.98\columnwidth]{01-established_wave_Tmag_streamlines}
-            \captionof{figure}{Magnitude du gradient de température et lignes de courant ($\mathrm{Re}=20$, $\mathrm{Bi} = 0.1$, eau à 20°C)}
-            \label{fig:streamlines_thermal}
+            \includegraphics[width=0.98\columnwidth]{01-established_wave_T_Bi100}
+            \captionof{figure}{Champs de température ($\mathrm{Re}=20$, eau à 20°C, $\mathrm{Bi}=100$)}
+            \label{fig:thermal_Bi100}
         \end{center}
     \end{multicols}
 
-    On observe nettement un front thermique situé proche du point de stagnation du fluide au sein de la vague. À noter que le modèle n'est pas assez complexe pour représenter correctement ce phénomène.
+    On observe nettement un front thermique situé proche du point de stagnation du fluide au sein de la vague pour un nombre de Biot faible, alors que les isothermes suivent l'interface pour un Biot élevé. À noter que le modèle n'est pas assez complexe pour représenter correctement le front thermique.
 
     \columnbreak
 
@@ -216,8 +216,11 @@ Campus Universitaire Savoie Technolac\\
             \captionof{figure}{Intensification de transfert sur une plaque verticale de 60 cm avec forçage (1Hz à 48 Hz) bruité en entrée ($\mathrm{Re}=20$, eau à 20°C, $\mathrm{Bi}=0.1$, Peclet forcé à 525)}
             \label{fig:freq_effect_Nu}
         \end{center}
+        Le nombre de Nusselt défini l'intensification du transfert comparé à un film plat.
 
-        On observe nettement des comportements similaires à hautes et basses fréquences, où les ondes naturelles dominent. Notre domaine d’intérêt commence à 9\,Hz. Le nombre de Nusselt augmente de façon brutal, pour diminuer avec la fréquence jusqu'à atteindre un plateau vers 20\,Hz.
+        $$\mathrm{Nu} = \frac{\int^L_0 \phi dx}{\phi_N L}$$
+
+        Le nombre de Nusselt augmente de façon brutal à 9\,Hz, pour diminuer avec la fréquence jusqu'à atteindre un plateau vers 20\,Hz.
 
     \end{multicols}
 
@@ -247,16 +250,13 @@ Campus Universitaire Savoie Technolac\\
 \begin{multicols}{2}
     \begin{center}
         \begin{tabular}{|c|c|}
-            \hline $\rho$ & masse volumique \\
-            \hline $u$ ou $V$ & champs de vitesse \\
-            \hline $p$ & pression \\
-            \hline $\tau$ & tenseur des contraintes \\
-            \hline $h$ & hauteur de l'interface \\
+            \hline $h$ & hauteur du film \\
+            \hline $q$ & débit local \\
+            \hline $\theta$ & température de l'interface \\
+            \hline $\phi / h$ &  flux pariétal\\
             \hline
         \end{tabular}
         \begin{tabular}{|c|c|}
-            \hline $q$ & débit local \\
-            \hline $f$ & force volumique \\
             \hline $\mathrm{Ct}$ & Facteur de pente \\
             \hline $\mathrm{Re}$ & Nombre de Reynolds \\
             \hline $\mathrm{W\!e}$ & Nombre de Weber \\
@@ -264,7 +264,7 @@ Campus Universitaire Savoie Technolac\\
             \hline
         \end{tabular}
     \end{center}
-
+    \columnbreak
         Encadrement de thèse :
         \begin{itemize}
             \item C. Ruyer - Quil (LOCIE)
